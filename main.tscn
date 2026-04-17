@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhtflfyhye0mq"]
+[gd_scene load_steps=6 format=3 uid="uid://dhtflfyhye0mq"]
 
-[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://d0f6vwateqdhi" path="res://character_body_3d.gd" id="2_0xm2m"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_top_color = Color(0.372924, 0.404077, 0.767691, 1)
@@ -15,6 +15,8 @@ background_mode = 2
 sky = SubResource("Sky_ig7tw")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0xm2m"]
 
 [node name="Main" type="Node3D"]
 
@@ -46,4 +48,17 @@ transform = Transform3D(0.981538, -0.17692, -0.0726841, 0.160683, 0.556586, 0.81
 use_collision = true
 size = Vector3(5, 7, 1)
 
-[node name="ProtoController" parent="." instance=ExtResource("1_ig7tw")]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+script = ExtResource("2_0xm2m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_0xm2m")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+use_collision = true
+size = Vector3(6, 6, 0.001)
