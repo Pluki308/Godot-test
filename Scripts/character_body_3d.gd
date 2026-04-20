@@ -15,8 +15,19 @@ var move_speed:=max_move_speed
 var jump:=false
 
 @onready var _camera: Camera3D = %Camera3D
+@onready var _collision: CollisionShape3D = $CollisionShape3D
+@onready var _mesh: MeshInstance3D = $MeshInstance3D
+@onready var max_player_height = _collision.scale.y
+
 
 var _camera_input_direction:=Vector2.ZERO
+
+func _set_height(scale_y_percent):
+	var diff = (_collision.scale.y - max_player_height*scale_y_percent) * _collision.shape.height / 2.0
+	_collision.scale.y = max_player_height*scale_y_percent
+	_collision.position.y -= diff
+	_mesh.scale.y = max_player_height*scale_y_percent
+	_mesh.position.y -= diff
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
@@ -28,10 +39,12 @@ func _input(event: InputEvent) -> void:
 			move_speed=max_move_speed
 			crouching=false
 			sprinting=false
+			_set_height(1)
 		elif not crouching:
 			move_speed=max_move_speed/2
 			crouching=true
 			sprinting=false
+			_set_height(0.8)
 	if event.is_action_pressed("sprint"):
 		if sprinting:
 			move_speed=max_move_speed
@@ -41,6 +54,7 @@ func _input(event: InputEvent) -> void:
 			move_speed=max_move_speed*2
 			sprinting=true
 			crouching=false
+			_set_height(1)
 
 		
 

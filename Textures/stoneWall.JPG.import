@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvnst6gdnbnnn"
-path.s3tc="res://.godot/imported/concrete-blocks-and-grass-landscaping-5efe3550679e4-1250.jpg-51d0e5fb41bd1374658315294e1fc107.s3tc.ctex"
+uid="uid://bl0qnw5o2gihp"
+path.s3tc="res://.godot/imported/stoneWall.JPG-9b0858ff088e4849ac41b1cfa6851ae1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures/concrete-blocks-and-grass-landscaping-5efe3550679e4-1250.jpg"
-dest_files=["res://.godot/imported/concrete-blocks-and-grass-landscaping-5efe3550679e4-1250.jpg-51d0e5fb41bd1374658315294e1fc107.s3tc.ctex"]
+source_file="res://Textures/stoneWall.JPG"
+dest_files=["res://.godot/imported/stoneWall.JPG-9b0858ff088e4849ac41b1cfa6851ae1.s3tc.ctex"]
 
 [params]
 
