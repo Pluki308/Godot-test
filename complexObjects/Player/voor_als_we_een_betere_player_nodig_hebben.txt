@@ -1,0 +1,6 @@
+deze player heb ik 'zelf' gemaakt met de hulp van een tutorial maar is niet heel erg goed. 
+als we een betere player willen maken moeten we de raycast in de player overzetten om de deur te laten werken.
+
+ik heb deuren en een speler toegevoegd aan de main scene. de deuren staan onder complexObjects/Door en als je een nieuwe wilt toevoegen sleep je Door.tscn in de node waarin je de deur wilt. als je een door of speler wilt aanpassen doe dat dan ook in Door.tscn of player.tcsn, dan verandert het meteen ook in de main.tcsn
+
+- Pluk 7 mei 2026 (18:45-19:45)

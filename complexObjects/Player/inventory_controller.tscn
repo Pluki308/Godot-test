@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://c2qhdhbfxbfj4"]
+
+[ext_resource type="Script" uid="uid://y5xl05hrgopc" path="res://complexObjects/Player/inventory_ui.gd" id="1_mx2on"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_616tt"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.101960786, 0.19607843, 0.26666668, 0.6)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0.8, 0.8, 0)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="inventoryController" type="Node" unique_id=1447822428]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=242090412]
+
+[node name="InventoryUI" type="Control" parent="CanvasLayer" unique_id=1011094143]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mx2on")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/InventoryUI" unique_id=973560326]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -196.0
+offset_top = -124.0
+offset_right = 204.0
+offset_bottom = 116.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_616tt")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/InventoryUI/Panel" unique_id=278565004]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/InventoryUI/Panel/MarginContainer" unique_id=1202277881]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 5

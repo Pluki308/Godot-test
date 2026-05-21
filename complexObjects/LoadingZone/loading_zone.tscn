@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cce0p7y385pay"]
+
+[ext_resource type="Script" uid="uid://diigbn7yglytr" path="res://complexObjects/LoadingZone/loading_zone.gd" id="1_8sct8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8sct8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_sgei8"]
+
+[node name="LoadingZone" type="Node3D" unique_id=1728213763]
+script = ExtResource("1_8sct8")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1036990938]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1126863944]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
+shape = SubResource("BoxShape3D_8sct8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D" unique_id=1521605742]
+mesh = SubResource("BoxMesh_sgei8")

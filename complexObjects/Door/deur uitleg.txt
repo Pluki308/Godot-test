@@ -1,0 +1,1 @@
+als je een nieuwe deur wilt maken moet je deze in de muur zetten waarin de deur zit, anders klopt de animatie niet.

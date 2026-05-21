@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://c3gyd211hijqt"]
+
+[ext_resource type="Script" uid="uid://d0f6vwateqdhi" path="res://complexObjects/Player/character_body_3d.gd" id="1_q4tl7"]
+[ext_resource type="Script" uid="uid://jqq1j68aq7sr" path="res://complexObjects/Player/ray_cast_3d.gd" id="2_6b4i4"]
+[ext_resource type="PackedScene" uid="uid://c2qhdhbfxbfj4" path="res://complexObjects/Player/inventory_controller.tscn" id="3_xi2ke"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6b4i4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t4ulj"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_t4ulj"]
+material = SubResource("StandardMaterial3D_t4ulj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig7tw"]
+albedo_color = Color(0.341176, 1, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_lqsjr"]
+material = SubResource("StandardMaterial3D_ig7tw")
+
+[node name="Player" type="CharacterBody3D" unique_id=816794797]
+script = ExtResource("1_q4tl7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1644655159]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_6b4i4")
+
+[node name="Camera3D" type="Camera3D" parent="CollisionShape3D" unique_id=2040853682]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="CollisionShape3D/Camera3D" unique_id=687677326]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
+target_position = Vector3(0, 0, -2)
+script = ExtResource("2_6b4i4")
+
+[node name="crosshair" type="MeshInstance3D" parent="CollisionShape3D/Camera3D" unique_id=546680945]
+unique_name_in_owner = true
+transform = Transform3D(-0.05, 0, -1.58151e-07, 0, 0.05, 0, 7.90754e-08, 0, -0.1, 0, 0, -1)
+mesh = SubResource("BoxMesh_t4ulj")
+skeleton = NodePath("../RayCast3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=721971776]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_lqsjr")
+
+[node name="inventoryController" parent="." unique_id=1447822428 instance=ExtResource("3_xi2ke")]
+unique_name_in_owner = true
