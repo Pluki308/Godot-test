@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dhtflfyhye0mq"]
+[gd_scene format=3 uid="uid://dhtflfyhye0mq"]
 
-[ext_resource type="Script" uid="uid://d0f6vwateqdhi" path="res://Scripts/character_body_3d.gd" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://dvnst6gdnbnnn" path="res://Textures/concrete-blocks-and-grass-landscaping-5efe3550679e4-1250.jpg" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://c3gyd211hijqt" path="res://complexObjects/Player/player.tscn" id="3_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://bl0qnw5o2gihp" path="res://Textures/stoneWall.JPG" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://c0guhvdmgxqyj" path="res://complexObjects/Door/Door.tscn" id="4_1bvp3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_top_color = Color(0.372924, 0.404077, 0.767691, 1)
@@ -18,74 +19,56 @@ sky = SubResource("Sky_ig7tw")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0xm2m"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig7tw"]
-albedo_color = Color(0.341176, 1, 1, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_0xm2m"]
-material = SubResource("StandardMaterial3D_ig7tw")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
 albedo_texture = ExtResource("2_h2yge")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
 albedo_texture = ExtResource("3_h2yge")
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" unique_id=732462159]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1287911249]
 environment = SubResource("Environment_0xm2m")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=461644824]
 transform = Transform3D(-0.999123, -0.0287722, 0.0304258, 0, 0.726575, 0.687087, -0.0418757, 0.686485, -0.725937, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Player" type="CharacterBody3D" parent="."]
-script = ExtResource("2_0xm2m")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-shape = SubResource("CapsuleShape3D_0xm2m")
-
-[node name="Camera3D" type="Camera3D" parent="Player/CollisionShape3D"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-mesh = SubResource("CapsuleMesh_0xm2m")
-
-[node name="grass" type="CSGCombiner3D" parent="."]
+[node name="grass" type="CSGCombiner3D" parent="." unique_id=904018182]
 material_override = SubResource("StandardMaterial3D_1bvp3")
 use_collision = true
 
-[node name="main_floor" type="CSGBox3D" parent="grass"]
+[node name="main_floor" type="CSGBox3D" parent="grass" unique_id=1175531727]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 use_collision = true
 size = Vector3(25, 1, 25)
 
-[node name="stoneWall" type="CSGCombiner3D" parent="."]
+[node name="stoneWall" type="CSGCombiner3D" parent="." unique_id=61349111]
 material_override = SubResource("StandardMaterial3D_lquwl")
 use_collision = true
 
-[node name="wall" type="CSGBox3D" parent="stoneWall"]
+[node name="wall" type="CSGBox3D" parent="stoneWall" unique_id=1763924331]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 2, 1)
 use_collision = true
 size = Vector3(1, 7, 10)
 
-[node name="windowPentagon" type="CSGCylinder3D" parent="stoneWall/wall"]
+[node name="windowPentagon" type="CSGCylinder3D" parent="stoneWall/wall" unique_id=717473197]
 transform = Transform3D(-4.37114e-08, 1, 0, 1, 4.37114e-08, 8.74228e-08, 8.74228e-08, 3.82137e-15, -1, 0, 0, 0)
 operation = 2
 radius = 2.0
 sides = 5
 
-[node name="slanted_wall" type="CSGBox3D" parent="stoneWall"]
+[node name="slanted_wall" type="CSGBox3D" parent="stoneWall" unique_id=2122303513]
 transform = Transform3D(0.981538, -0.17692, -0.0726841, 0.160683, 0.556586, 0.815103, -0.103753, -0.811734, 0.574738, -1.98154, -0.160683, -4.89625)
 use_collision = true
 size = Vector3(5, 7, 1)
 
-[node name="thin_wall" type="CSGBox3D" parent="stoneWall"]
+[node name="thin_wall" type="CSGBox3D" parent="stoneWall" unique_id=692708474]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
 use_collision = true
 size = Vector3(6, 6, 0.001)
+
+[node name="Player" parent="." unique_id=816794797 instance=ExtResource("3_1bvp3")]
+
+[node name="door" parent="." unique_id=264334702 instance=ExtResource("4_1bvp3")]
+transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 0.2, -7, 1.5, 3)
