@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bb87nybmr3apa"]
+
+[ext_resource type="Texture2D" uid="uid://bl0qnw5o2gihp" path="res://Textures/stoneWall.JPG" id="1_m135w"]
+[ext_resource type="PackedScene" uid="uid://c3gyd211hijqt" path="res://complexObjects/Player/player.tscn" id="2_pcft3"]
+[ext_resource type="PackedScene" uid="uid://cce0p7y385pay" path="res://complexObjects/LoadingZone/loading_zone.tscn" id="3_p0prn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dj5hn"]
+albedo_texture = ExtResource("1_m135w")
+
+[node name="Level 2" type="Node3D" unique_id=1693994617]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1412477734]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+material_override = SubResource("StandardMaterial3D_dj5hn")
+use_collision = true
+size = Vector3(5, 1, 5)
+
+[node name="Player" parent="." unique_id=816794797 instance=ExtResource("2_pcft3")]
+transform = Transform3D(-0.50000006, 0, -0.8660254, 0, 1, 0, 0.8660254, 0, -0.50000006, -2, 0, -1)
+camera_x_limit = 1.561
+
+[node name="LoadingZoneToMain" parent="." unique_id=1728213763 instance=ExtResource("3_p0prn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+next_scene = "uid://dhtflfyhye0mq"

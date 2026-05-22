@@ -7,7 +7,7 @@ func _ready():
 	var mat = crosshair.get_active_material(0).duplicate()
 	crosshair.set_surface_override_material(0, mat)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	
 	if is_colliding():
 		var hitObj = get_collider()

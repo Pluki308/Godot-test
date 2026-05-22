@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c3gyd211hijqt" path="res://complexObjects/Player/player.tscn" id="3_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://bl0qnw5o2gihp" path="res://Textures/stoneWall.JPG" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://c0guhvdmgxqyj" path="res://complexObjects/Door/Door.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://cce0p7y385pay" path="res://complexObjects/LoadingZone/loading_zone.tscn" id="5_7mycd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_top_color = Color(0.372924, 0.404077, 0.767691, 1)
@@ -69,6 +70,11 @@ use_collision = true
 size = Vector3(6, 6, 0.001)
 
 [node name="Player" parent="." unique_id=816794797 instance=ExtResource("3_1bvp3")]
+camera_x_limit = 1.561
 
 [node name="door" parent="." unique_id=264334702 instance=ExtResource("4_1bvp3")]
 transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 0.2, -7, 1.5, 3)
+
+[node name="LoadingZone" parent="." unique_id=1728213763 instance=ExtResource("5_7mycd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)
+next_scene = "uid://bb87nybmr3apa"

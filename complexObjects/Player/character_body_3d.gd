@@ -8,7 +8,7 @@ extends CharacterBody3D
 var move_speed:=max_move_speed
 @export var crouching=false
 @export var sprinting=false
-@export var jump_strength= 4.0
+@export var jump_strength:= 4.0
 @export var acceleration:= 200.0
 @export var gravity := 9.8
 @export var camera_x_limit := PI / 2.0 - 0.01
@@ -26,6 +26,7 @@ var jump:=false
 var _camera_input_direction:=Vector2.ZERO
 
 func _ready() -> void:
+	add_to_group("player")
 	inventory_controller.visible=false
 
 func _set_height(scale_y_percent):
