@@ -70,10 +70,12 @@ use_collision = true
 size = Vector3(6, 6, 0.001)
 
 [node name="Player" parent="." unique_id=816794797 instance=ExtResource("3_1bvp3")]
+transform = Transform3D(0.25881907, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.25881907, 0, 0, 0)
 camera_x_limit = 1.561
 
 [node name="door" parent="." unique_id=264334702 instance=ExtResource("4_1bvp3")]
 transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 0.2, -7, 1.5, 3)
+closed = true
 
 [node name="LoadingZone" parent="." unique_id=1728213763 instance=ExtResource("5_7mycd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0)

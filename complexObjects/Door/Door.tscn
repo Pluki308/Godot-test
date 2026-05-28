@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c0guhvdmgxqyj"]
 
+[ext_resource type="Script" uid="uid://j2ole34v08l0" path="res://complexObjects/Door/door_export_vars.gd" id="1_2hqru"]
 [ext_resource type="Script" uid="uid://c3jahxojg7bgm" path="res://complexObjects/Door/door.gd" id="1_o2vlx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x2om4"]
@@ -51,6 +52,8 @@ _data = {
 
 [node name="door" type="Node3D" unique_id=264334702]
 transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 0.2, 0, 1.5, 0)
+script = ExtResource("1_2hqru")
+closed = false
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1246131177 node_paths=PackedStringArray("animation_player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -2.84217e-14)
