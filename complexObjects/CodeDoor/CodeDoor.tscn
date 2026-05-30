@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://dr336gi2r05da"]
+
+[ext_resource type="Script" uid="uid://di7fmf23w6b7y" path="res://complexObjects/CodeDoor/code_door.gd" id="1_gmm3n"]
+[ext_resource type="Script" uid="uid://c8wn2fmij3cjg" path="res://complexObjects/Door/door_staticBody.gd" id="2_gmm3n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x2om4"]
+albedo_color = Color(0.6907, 0.385186, 1.92523e-07, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8sou1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fayot"]
+albedo_color = Color(1, 0.75014, 0.11316, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8ke5f"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_gmm3n"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xgcdm"]
+size = Vector3(0.2, 0.165, 2.2)
+
+[sub_resource type="Animation" id="Animation_20182"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1u2xs"]
+resource_name = "open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.01, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4tft2"]
+_data = {
+&"RESET": SubResource("Animation_20182"),
+&"open": SubResource("Animation_1u2xs")
+}
+
+[node name="CodeDoor" type="Node3D" unique_id=950765270]
+transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 0.2, 0, 1.5, 0)
+script = ExtResource("1_gmm3n")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=362048906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -2.84217e-14)
+script = ExtResource("2_gmm3n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=941325274]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -5.68434e-14, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_x2om4")
+mesh = SubResource("BoxMesh_8sou1")
+
+[node name="handle" type="MeshInstance3D" parent="StaticBody3D/MeshInstance3D" unique_id=173915329]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 1.4, 0.3, 0, 0)
+material_override = SubResource("StandardMaterial3D_fayot")
+mesh = SubResource("BoxMesh_8sou1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=557900937]
+shape = SubResource("BoxShape3D_8ke5f")
+
+[node name="CodeSpot4" type="StaticBody3D" parent="." unique_id=1930411033]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0.19999999, -2.84217e-14)
+
+[node name="CodeSpot4" type="MeshInstance3D" parent="CodeSpot4" unique_id=773330893]
+transform = Transform3D(0.1, 0, 0, 0, 0.033, 0, 0, 0, 1.1, 0, 0, 0)
+mesh = SubResource("BoxMesh_gmm3n")
+skeleton = NodePath("../../StaticBody3D")
+
+[node name="letter4" type="Label3D" parent="CodeSpot4/CodeSpot4" unique_id=1085715574]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 1.55, 0.5)
+text = "0"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CodeSpot4" unique_id=1714674117]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.032826185, 0)
+shape = SubResource("BoxShape3D_xgcdm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1925873202]
+libraries/ = SubResource("AnimationLibrary_4tft2")
+
+[node name="CodeSpot3" type="StaticBody3D" parent="." unique_id=1755978722]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.2, 0)
+
+[node name="CodeSpot3" type="MeshInstance3D" parent="CodeSpot3" unique_id=1729454534]
+transform = Transform3D(0.1, 0, 0, 0, 0.033, 0, 0, 0, 1.1, 0, 0, 0)
+mesh = SubResource("BoxMesh_gmm3n")
+skeleton = NodePath("../../StaticBody3D")
+
+[node name="letter3" type="Label3D" parent="CodeSpot3/CodeSpot3" unique_id=1215625059]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 1.55, 0.5)
+text = "0"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CodeSpot3" unique_id=160738430]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.032826185, 0)
+shape = SubResource("BoxShape3D_xgcdm")
+
+[node name="CodeSpot2" type="StaticBody3D" parent="." unique_id=422330745]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.2, 0)
+
+[node name="CodeSpot2" type="MeshInstance3D" parent="CodeSpot2" unique_id=1122284976]
+transform = Transform3D(0.1, 0, 0, 0, 0.033, 0, 0, 0, 1.1, 0, 0, 0)
+mesh = SubResource("BoxMesh_gmm3n")
+skeleton = NodePath("../../StaticBody3D")
+
+[node name="letter2" type="Label3D" parent="CodeSpot2/CodeSpot2" unique_id=630072696]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 1.55, 0.5)
+text = "0"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CodeSpot2" unique_id=1467181994]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.032826185, 0)
+shape = SubResource("BoxShape3D_xgcdm")
+
+[node name="CodeSpot1" type="StaticBody3D" parent="." unique_id=952995374]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.2, 0)
+
+[node name="CodeSpot3" type="MeshInstance3D" parent="CodeSpot1" unique_id=1293290926]
+transform = Transform3D(0.1, 0, 0, 0, 0.033, 0, 0, 0, 1.1, 0, 0, 0)
+mesh = SubResource("BoxMesh_gmm3n")
+skeleton = NodePath("../../StaticBody3D")
+
+[node name="letter3" type="Label3D" parent="CodeSpot1/CodeSpot3" unique_id=616160827]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 1.55, 0.5)
+text = "0"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CodeSpot1" unique_id=1769446429]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.032826185, 0)
+shape = SubResource("BoxShape3D_xgcdm")

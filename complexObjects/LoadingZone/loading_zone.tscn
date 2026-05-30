@@ -4,7 +4,12 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8sct8"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8sct8"]
+transparency = 1
+albedo_color = Color(0.21568628, 0.35686275, 0.38039216, 0.5647059)
+
 [sub_resource type="BoxMesh" id="BoxMesh_sgei8"]
+material = SubResource("StandardMaterial3D_8sct8")
 
 [node name="LoadingZone" type="Node3D" unique_id=1728213763]
 script = ExtResource("1_8sct8")

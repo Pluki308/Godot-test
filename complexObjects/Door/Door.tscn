@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c0guhvdmgxqyj"]
 
-[ext_resource type="Script" uid="uid://j2ole34v08l0" path="res://complexObjects/Door/door_export_vars.gd" id="1_2hqru"]
 [ext_resource type="Script" uid="uid://c3jahxojg7bgm" path="res://complexObjects/Door/door.gd" id="1_o2vlx"]
+[ext_resource type="Script" uid="uid://c8wn2fmij3cjg" path="res://complexObjects/Door/door_staticBody.gd" id="2_2hqru"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x2om4"]
 albedo_color = Color(0.6907, 0.385186, 1.92523e-07, 1)
@@ -50,28 +50,26 @@ _data = {
 &"open": SubResource("Animation_1u2xs")
 }
 
-[node name="door" type="Node3D" unique_id=264334702]
-transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 0.2, 0, 1.5, 0)
-script = ExtResource("1_2hqru")
-closed = false
-
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1246131177 node_paths=PackedStringArray("animation_player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -2.84217e-14)
+[node name="door" type="Node3D" unique_id=950765270]
+transform = Transform3D(-1.0859971e-05, 0, 1, 0, 7, 0, -3, 0, -3.6199901e-06, 0, 1.5, 0)
 script = ExtResource("1_o2vlx")
-animation_player = NodePath("../AnimationPlayer")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=12699]
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=362048906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -2.84217e-14)
+script = ExtResource("2_2hqru")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=941325274]
 transform = Transform3D(1, 0, 0, 0, 1, 0, -5.68434e-14, 0, 1, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_x2om4")
 mesh = SubResource("BoxMesh_8sou1")
 
-[node name="handle" type="MeshInstance3D" parent="StaticBody3D/MeshInstance3D" unique_id=1323304745]
+[node name="handle" type="MeshInstance3D" parent="StaticBody3D/MeshInstance3D" unique_id=173915329]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 1.4, 0.3, 0, 0)
 material_override = SubResource("StandardMaterial3D_fayot")
 mesh = SubResource("BoxMesh_8sou1")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1864766436]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=557900937]
 shape = SubResource("BoxShape3D_8ke5f")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1139052156]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1925873202]
 libraries/ = SubResource("AnimationLibrary_4tft2")

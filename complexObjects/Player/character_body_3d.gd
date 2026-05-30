@@ -8,6 +8,7 @@ extends CharacterBody3D
 var move_speed:=max_move_speed
 @export var crouching=false
 @export var sprinting=false
+@export var flying=false
 @export var jump_strength:= 4.0
 @export var acceleration:= 200.0
 @export var gravity := 9.8
@@ -24,6 +25,11 @@ var jump:=false
 
 
 var _camera_input_direction:=Vector2.ZERO
+var last_grounded_position: Vector3
+
+
+func teleport_to_last_grounded() -> void:
+	global_position = last_grounded_position
 
 func _ready() -> void:
 	add_to_group("player")
@@ -53,7 +59,7 @@ func _input(event: InputEvent) -> void:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		
 		
-	if event.is_action_pressed("crouch"):
+	if event.is_action_pressed("crouch") and not flying:
 		if crouching:
 			move_speed=max_move_speed
 			crouching=false
@@ -74,7 +80,11 @@ func _input(event: InputEvent) -> void:
 			sprinting=true
 			crouching=false
 			_set_height(1)
-
+	if event.is_action_pressed("flying"):
+		if not flying:
+			flying=true
+		else: 
+			flying=false
 		
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -97,21 +107,31 @@ func _physics_process(delta: float) -> void:
 	
 	move_direction=move_direction.normalized()
 	
-	if not is_on_floor():
-		velocity.y-=gravity*delta
+	if not flying:
+		if not is_on_floor():
+			velocity.y-=gravity*delta
+		else:
+			last_grounded_position = global_position
+			if Input.is_action_just_pressed("jump"):
+				velocity.y=jump_strength
+			else:
+				velocity.y=0.0
 	else:
-		if Input.is_action_just_pressed("jump"):
+		if Input.is_action_pressed("jump"):
 			velocity.y=jump_strength
-
+		elif Input.is_action_pressed("crouch"):
+			velocity.y=-jump_strength
 		else:
 			velocity.y=0.0
-	
 	velocity.x = move_toward(velocity.x, move_direction.x * move_speed, acceleration * delta)
 	velocity.z = move_toward(velocity.z, move_direction.z * move_speed, acceleration * delta)
 
 	move_and_slide()
 	
 	
-	
+	for collisionIndex in get_slide_collision_count():
+		var collision := get_slide_collision(collisionIndex)
+		if collision.get_collider().is_in_group("KillZone"):
+			teleport_to_last_grounded()
 	
 	

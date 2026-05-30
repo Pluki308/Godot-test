@@ -4,6 +4,7 @@ var closed = false
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
+
 func interact():
 	
 	closed = !closed
