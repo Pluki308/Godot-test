@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bl0qnw5o2gihp" path="res://Textures/stoneWall.JPG" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://c0guhvdmgxqyj" path="res://complexObjects/Door/Door.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://cce0p7y385pay" path="res://complexObjects/LoadingZone/loading_zone.tscn" id="5_7mycd"]
-[ext_resource type="PackedScene" uid="uid://bx34rw4ddm1rr" path="res://complexObjects/CodeDoor/CodeDoor.tscn" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://dr336gi2r05da" path="res://complexObjects/CodeDoor/CodeDoor.tscn" id="6_7mycd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_top_color = Color(0.372924, 0.404077, 0.767691, 1)
@@ -84,5 +84,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 3)
 [node name="door" parent="doorcontainer" unique_id=264334702 instance=ExtResource("4_1bvp3")]
 transform = Transform3D(1.509958e-07, 0, 0.2, 0, 3, 0, -2, 0, 1.509958e-08, 0, 1.5, 0)
 
-[node name="door" parent="." unique_id=950765270 instance=ExtResource("6_7mycd")]
-transform = Transform3D(-8.742278e-08, 0, 0.2, 0, 3, 0, -2, 0, -8.742278e-09, -2, 1.5, 4)
+[node name="CodeDoor" parent="." unique_id=950765270 instance=ExtResource("6_7mycd")]
+transform = Transform3D(1.9999998, 0, 1.7881396e-08, 0, 2.9999995, 0, -1.7881395e-07, 0, 0.19999999, -2, 1.5, -5)
+code = "2739"

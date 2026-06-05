@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://di7fmf23w6b7y" path="res://complexObjects/CodeDoor/code_door.gd" id="1_gmm3n"]
 [ext_resource type="Script" uid="uid://c8wn2fmij3cjg" path="res://complexObjects/Door/door_staticBody.gd" id="2_gmm3n"]
+[ext_resource type="Script" uid="uid://ce27mdw88txjc" path="res://complexObjects/CodeDoor/code_spot.gd" id="3_xgcdm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x2om4"]
 albedo_color = Color(0.6907, 0.385186, 1.92523e-07, 1)
@@ -76,8 +77,10 @@ mesh = SubResource("BoxMesh_8sou1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=557900937]
 shape = SubResource("BoxShape3D_8ke5f")
 
-[node name="CodeSpot4" type="StaticBody3D" parent="." unique_id=1930411033]
+[node name="CodeSpot4" type="StaticBody3D" parent="." unique_id=1930411033 node_paths=PackedStringArray("label")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0.19999999, -2.84217e-14)
+script = ExtResource("3_xgcdm")
+label = NodePath("CodeSpot4/letter4")
 
 [node name="CodeSpot4" type="MeshInstance3D" parent="CodeSpot4" unique_id=773330893]
 transform = Transform3D(0.1, 0, 0, 0, 0.033, 0, 0, 0, 1.1, 0, 0, 0)
@@ -85,6 +88,7 @@ mesh = SubResource("BoxMesh_gmm3n")
 skeleton = NodePath("../../StaticBody3D")
 
 [node name="letter4" type="Label3D" parent="CodeSpot4/CodeSpot4" unique_id=1085715574]
+unique_name_in_owner = true
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 1.55, 0.5)
 text = "0"
 
@@ -95,8 +99,10 @@ shape = SubResource("BoxShape3D_xgcdm")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1925873202]
 libraries/ = SubResource("AnimationLibrary_4tft2")
 
-[node name="CodeSpot3" type="StaticBody3D" parent="." unique_id=1755978722]
+[node name="CodeSpot3" type="StaticBody3D" parent="." unique_id=1755978722 node_paths=PackedStringArray("label")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.2, 0)
+script = ExtResource("3_xgcdm")
+label = NodePath("CodeSpot3/letter3")
 
 [node name="CodeSpot3" type="MeshInstance3D" parent="CodeSpot3" unique_id=1729454534]
 transform = Transform3D(0.1, 0, 0, 0, 0.033, 0, 0, 0, 1.1, 0, 0, 0)
@@ -104,6 +110,7 @@ mesh = SubResource("BoxMesh_gmm3n")
 skeleton = NodePath("../../StaticBody3D")
 
 [node name="letter3" type="Label3D" parent="CodeSpot3/CodeSpot3" unique_id=1215625059]
+unique_name_in_owner = true
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 1.55, 0.5)
 text = "0"
 
@@ -111,8 +118,10 @@ text = "0"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.032826185, 0)
 shape = SubResource("BoxShape3D_xgcdm")
 
-[node name="CodeSpot2" type="StaticBody3D" parent="." unique_id=422330745]
+[node name="CodeSpot2" type="StaticBody3D" parent="." unique_id=422330745 node_paths=PackedStringArray("label")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.2, 0)
+script = ExtResource("3_xgcdm")
+label = NodePath("CodeSpot2/letter2")
 
 [node name="CodeSpot2" type="MeshInstance3D" parent="CodeSpot2" unique_id=1122284976]
 transform = Transform3D(0.1, 0, 0, 0, 0.033, 0, 0, 0, 1.1, 0, 0, 0)
@@ -120,6 +129,7 @@ mesh = SubResource("BoxMesh_gmm3n")
 skeleton = NodePath("../../StaticBody3D")
 
 [node name="letter2" type="Label3D" parent="CodeSpot2/CodeSpot2" unique_id=630072696]
+unique_name_in_owner = true
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 1.55, 0.5)
 text = "0"
 
@@ -127,15 +137,18 @@ text = "0"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.032826185, 0)
 shape = SubResource("BoxShape3D_xgcdm")
 
-[node name="CodeSpot1" type="StaticBody3D" parent="." unique_id=952995374]
+[node name="CodeSpot1" type="StaticBody3D" parent="." unique_id=952995374 node_paths=PackedStringArray("label")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.2, 0)
+script = ExtResource("3_xgcdm")
+label = NodePath("CodeSpot1/letter1")
 
-[node name="CodeSpot3" type="MeshInstance3D" parent="CodeSpot1" unique_id=1293290926]
+[node name="CodeSpot1" type="MeshInstance3D" parent="CodeSpot1" unique_id=1293290926]
 transform = Transform3D(0.1, 0, 0, 0, 0.033, 0, 0, 0, 1.1, 0, 0, 0)
 mesh = SubResource("BoxMesh_gmm3n")
 skeleton = NodePath("../../StaticBody3D")
 
-[node name="letter3" type="Label3D" parent="CodeSpot1/CodeSpot3" unique_id=616160827]
+[node name="letter1" type="Label3D" parent="CodeSpot1/CodeSpot1" unique_id=616160827]
+unique_name_in_owner = true
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 1.55, 0.5)
 text = "0"
 

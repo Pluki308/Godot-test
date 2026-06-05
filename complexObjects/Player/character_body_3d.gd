@@ -9,6 +9,7 @@ var move_speed:=max_move_speed
 @export var crouching=false
 @export var sprinting=false
 @export var flying=false
+@export var flyingLadder=false
 @export var jump_strength:= 4.0
 @export var acceleration:= 200.0
 @export var gravity := 9.8
@@ -107,7 +108,7 @@ func _physics_process(delta: float) -> void:
 	
 	move_direction=move_direction.normalized()
 	
-	if not flying:
+	if not flying and not flyingLadder:
 		if not is_on_floor():
 			velocity.y-=gravity*delta
 		else:
@@ -126,12 +127,16 @@ func _physics_process(delta: float) -> void:
 	velocity.x = move_toward(velocity.x, move_direction.x * move_speed, acceleration * delta)
 	velocity.z = move_toward(velocity.z, move_direction.z * move_speed, acceleration * delta)
 
+	
+
 	move_and_slide()
 	
-	
+	flyingLadder=false
 	for collisionIndex in get_slide_collision_count():
 		var collision := get_slide_collision(collisionIndex)
 		if collision.get_collider().is_in_group("KillZone"):
 			teleport_to_last_grounded()
-	
+		elif collision.get_collider().is_in_group("ladder"):
+			flyingLadder=true
+		
 	
