@@ -3,22 +3,46 @@
 [ext_resource type="Texture2D" uid="uid://bl0qnw5o2gihp" path="res://Textures/stoneWall.JPG" id="1_m135w"]
 [ext_resource type="PackedScene" uid="uid://c3gyd211hijqt" path="res://complexObjects/Player/player.tscn" id="2_pcft3"]
 [ext_resource type="PackedScene" uid="uid://cce0p7y385pay" path="res://complexObjects/LoadingZone/loading_zone.tscn" id="3_p0prn"]
+[ext_resource type="PackedScene" uid="uid://cjrfe7alyfacl" path="res://complexObjects/Vijand/enemy.tscn" id="4_pcft3"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pcft3"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_p0prn"]
+sky_material = SubResource("ProceduralSkyMaterial_pcft3")
+
+[sub_resource type="Environment" id="Environment_dj5hn"]
+background_mode = 2
+sky = SubResource("Sky_p0prn")
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dj5hn"]
 albedo_texture = ExtResource("1_m135w")
 
 [node name="Level 2" type="Node3D" unique_id=1693994617]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=225846347]
+environment = SubResource("Environment_dj5hn")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=33058992]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
+
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1412477734]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 material_override = SubResource("StandardMaterial3D_dj5hn")
 use_collision = true
-size = Vector3(5, 1, 5)
+size = Vector3(50, 1, 50)
 
 [node name="Player" parent="." unique_id=816794797 instance=ExtResource("2_pcft3")]
-transform = Transform3D(-0.50000006, 0, -0.8660254, 0, 1, 0, 0.8660254, 0, -0.50000006, -2, 0, -1)
-camera_x_limit = 1.561
+transform = Transform3D(-0.50000006, 0, -0.8660254, 0, 1, 0, 0.8660254, 0, -0.50000006, -2, -0.5, -1)
 
 [node name="LoadingZoneToMain" parent="." unique_id=1728213763 instance=ExtResource("3_p0prn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 11, 1, 15)
 next_scene = "uid://dhtflfyhye0mq"
+
+[node name="enemy" parent="." unique_id=635381681 instance=ExtResource("4_pcft3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -0.5, 10)

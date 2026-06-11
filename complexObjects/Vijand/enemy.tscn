@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cjrfe7alyfacl"]
+
+[ext_resource type="Script" uid="uid://o6jd5kahmd82" path="res://complexObjects/Vijand/enemy.gd" id="1_1wxcn"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1wxcn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1wxcn"]
+albedo_color = Color(0.82002634, 0.273405, 0.27013314, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1wxcn"]
+material = SubResource("StandardMaterial3D_1wxcn")
+
+[node name="enemy" type="CharacterBody3D" unique_id=635381681]
+script = ExtResource("1_1wxcn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=504191479]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_1wxcn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1519627912]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_1wxcn")
+skeleton = NodePath("../CollisionShape3D")
